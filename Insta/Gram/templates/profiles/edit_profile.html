@@ -1,36 +1,38 @@
 {% extends 'allofinsta/base.html' %}
-{% load static %}
-{% load bootstrap3 %}
-
-<!-- Styles block -->
-{% block styles %}
-    {{block.super}}
-    <link rel="stylesheet" href="{% static 'css/post.css'%}">
-{% endblock %}
-
-<!-- Content block -->
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+{% load bootstrap4 %}
 {% block content %}
-    {{block.super}}
-    <div class="container">
-        <!-- Empty Div -->
-        <div class="col-md-2 col-lg-2">
+{{block.super}}
+<style>
+  .container {
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+    text-align: left;
+  }
+</style>
+<div class="container">
+    <div class="row mt-5"></div>
+    <div class="row mt-5"></div>
+    <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    <div class="card card-info mt-5">
+        <div class="card-header">
+            <h2>Edit Your Profile</h2>
         </div>
-        <!-- Create Post form -->
-        <div class="col-md-8 col-lg-8">
-            <form action="{% url 'edit'%}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                <input type="submit" class="btn btn-success btn-lg">
-            </form>
+        <div class="card-body">
+                <form action="{%url 'edit' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <div class="form-group">
+                    <input type="submit" class="btn btn-info btn-sm" value="Post">
+                </div>
+
+                </form>
         </div>
-
-        <!-- Empty Div -->
-        <div class="col-md-2 col-lg-2">
-
-        </div>
-
-
-
     </div>
-
+    </div>
+    <div class="col-md-4"></div>
+</div>
+</div>
 {% endblock %}

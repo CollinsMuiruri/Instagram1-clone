@@ -8,6 +8,7 @@
   {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/baseinsta.css' %}">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,12 +36,28 @@
   width: 50px !important;
   height: 50px !important;
 }
+#heart {
+  font-size: 30px;
+  padding-left: 5px;
+}
+#chat {
+  font-size: 30px;
+}
+#bookmark {
+  font-size: 30px;
+  padding-left: 750px;
+}
 </style>
   <div class="w3-card-4" style="background-color:white;margin-left:18%;margin-right:28%;opacity:0.9;margin-top:6%;">
     <a href="#"><img src="{{images_item.image.url}}" class="profile " alt="Image" style="width:100%"></a>
 
     <a href="{% url 'after' id=images_item.id %}"><img src="{{images_item.image.url}}" class="img-responsive " alt="Image" style="width:100%"></a>
     <p>{{images_item.image.caption}}</p>
+    <a style="color:inherit;">
+        <ion-icon id="heart" name="heart-empty"></ion-icon>
+        {# <a href="{% url 'comment' pk=img.id %}" style="color:inherit;"><i class="far fa-comment fa-2x ml-4"></i></a> #}
+        <ion-icon id="bookmark" name="bookmark"></ion-icon>
+</a>
   </div>
 
   </div>
@@ -57,5 +74,5 @@
 </div>
 </div>
 </body>
-
+<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
 {% endblock %}
