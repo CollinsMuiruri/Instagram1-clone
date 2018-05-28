@@ -1,0 +1,25 @@
+{% extends 'allofinsta/base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for image in image %}
+<style>
+.profile{
+border-radius:50%;
+width: 50px !important;
+height: 50px !important;
+}
+</style>
+<div class="article-detail">
+  <div class="article">
+    <h2>{{image.image_name}}</h2>
+    <p>{{image.caption}}</p>
+    <img src="{{image.image.url}}" class="img-responsive " alt="Image" style="width:50%">
+
+
+  </div>
+
+</div>
+{% endfor %}
+{% endblock %}

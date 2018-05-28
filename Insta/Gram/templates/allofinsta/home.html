@@ -1,0 +1,21 @@
+{% extends 'allofinsta/base.html' %}
+{% load static %}
+{% block content %}
+
+<link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
+<h1>{hi}</h1>
+{% if image in image %}
+<div class="w3-container">
+  <div class="w3-row">
+    <div class="w3-card-4" style="background-color:white;margin-left:18%;margin-right:28%;opacity:0.9;margin-top:6%;">
+
+    <h2>{{image.image_name}}hi</h2>
+    <p>{{image.caption}}</p>
+    <img src="{{image.image.url}}" alt="">
+  </div>
+
+  </div>
+
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,70 @@
+{%extends 'allofinsta/base.html'%}
+
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="col-xs-4 col-sm-6 col-md-3 mt-6">
+    {% if profile.profile_pic %}
+        <div class="row">
+                <div class="col-md-3">
+                    <img src="{{profile.profile_pic.url | safe}}" class="img-fluid rounded" style="width:100%">
+                </div>
+            <div class="col-md-9">
+                <div>
+                    <h5><strong>{{profile.user}}</strong></h5>
+                </div>
+                <div>
+                        <p>{{profile.bio}}</p>
+                </div>
+                {% if user.username == profile_id %}
+                <div>
+                    <a href="{% url 'latest'%}"><button type="button" class="btn btn-outline-primary btn-lg">Edit Your Profile</button></a>
+                </div>
+                {%endif%}
+            </div>
+            </div>
+    {% else %}
+            <div class="row">
+                    <div class="col-md-3">
+                        <img src="https://www.shareicon.net/instagram-follower-user-profile-886412" class="img-fluid rounded" alt="">
+                    </div>
+                <div class="col-md-9">
+                    <div>
+                        <h5><strong>{{profile.user}}</strong></h5>
+                    </div>
+                    <div>
+                            <a href="{% url 'latest'%}"><button type="button" class="btn btn-outline-primary btn-lg">Edit Your Profile</button></a>
+                    </div>
+                </div>
+                </div>
+    {% endif %}
+
+
+<div class="row">
+        {% if user.username == profile_id %}
+
+        <div class="postme col-md-4">
+           <a href="{% url 'post' %}"><img src="{% static 'images/insta.png' %}" alt="Add Image"></a>
+        </div>
+        {%endif%}
+        {% for profiles in profiles %}
+    <div>
+    <div class="card mb-3">
+        <img class="card-img-top img-fluid" src="{{profiles.image.url}}" alt="Card image cap">
+        <div class="card-body">
+                <div class="likes">
+                        <p class="p-3 ml-2"></p>
+                      </div>
+          <!-- <p class="card-title"><strong><i class="fas fa-heart"></i> {{profiles.likes}} likes</strong></p> -->
+          <p class="card-text">{{profiles.caption}}</p>
+          <!-- <p class="card-text"><small class="text-muted">Last updated {{profiles.post_date|timesince}} ago</small></p> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+    </div>
+
+{% endblock %}

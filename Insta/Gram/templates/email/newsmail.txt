@@ -1,0 +1,8 @@
+Hello {{name}}
+
+Welcome to instaGram newsletter where you will find news about Moringa School.
+
+
+
+Yours Truly,
+Collins W. Muiruri
