@@ -85,6 +85,13 @@ def profile(request):
 
 
 @login_required(login_url='/accounts/login/')
+def account_details(request):
+    title = 'Instagram'
+    settings = Profile.get_profile()
+    return render(request, 'profiles/account_details.html', {"settings": settings, "title": title})
+
+
+@login_required(login_url='/accounts/login/')
 def edit(request):
     title = 'Insta-Gram'
     current_user = request.user

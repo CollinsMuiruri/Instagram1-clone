@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^latest/(?P<image_id>\d+)', views.image, name='detail'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^edit/', views.edit, name='edit'),
+    url(r'^settings/', views.account_details, name='settings'),
     url(r'^new/image/$', views.new_image, name='new-image'),
     # url(r'^comment/(?P<pk>\d+)', views.new_comment, name='comment'),
     url(r'^(?P<id>\d+)/$', views.after_detail, name='after'),

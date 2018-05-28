@@ -7,8 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../static/css/baseinsta.css">
-  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Pacifico" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link rel="shortcut icon" type="image/png" href="{% static 'images/insta.png' %}"/>
 </head>
 
@@ -60,6 +59,12 @@ nav {
                   </li>
                   <li>
                     <a href="/accounts/password/change">Change password</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'settings' %}">Account details</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'edit' %}">Edit profile</a>
                   </li>
                   <li>
                     <a href="/logout">Logout</a>
