@@ -9,11 +9,12 @@ urlpatterns = [
     url(r'^home/(?P<id>\d+)/$', views.image_detail, name='home'),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^latest/(?P<image_id>\d+)', views.image, name='detail'),
-    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^profile/(?P<profile_id>[-\w]+)/$', views.profile, name='profile'),
     url(r'^edit/', views.edit, name='edit'),
     url(r'^settings/', views.account_details, name='settings'),
     url(r'^new/image/$', views.new_image, name='new-image'),
     # url(r'^comment/(?P<pk>\d+)', views.new_comment, name='comment'),
+    url(r'^view_profile/(?P<rc>\d+)', views.view_your_profile, name='view'),
     url(r'^(?P<id>\d+)/$', views.after_detail, name='after'),
 ]
 if settings.DEBUG:

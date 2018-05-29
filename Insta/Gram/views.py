@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponseRedirect
 import datetime as dt
 from .models import Image, Profile, Comment
@@ -18,9 +18,9 @@ def latest_images(request):
         if form.is_valid():
             name = form.cleaned_data['your_name']
             email = form.cleaned_data['email']
-            recipient = NewsLetterRecipients(name = name, email = email)
+            recipient = NewsLetterRecipients(name=name, email=email)
             recipient.save()
-            send_welcome_email(name,email)
+            send_welcome_email(name, email)
 
             HttpResponseRedirect('latest')
 
@@ -75,10 +75,10 @@ def new_image(request):
 
 
 @login_required(login_url='/accounts/login/')
-def profile(request):
+def profile(request, profile_id):
     title = 'Profile Page'
     current_user = request.user
-    profile = Profile.get_profile()
+    profile = Profile.get_profile(creator__username__iexact=profile_id)
     image = Image.get_images()
     comments = Comment.get_comment()
     return render(request, 'profiles/profile.html', {"title": title, "comments": comments, "image": image, "user": current_user, "profile": profile})
@@ -93,7 +93,7 @@ def account_details(request):
 
 @login_required(login_url='/accounts/login/')
 def edit(request):
-    title = 'Insta-Gram'
+    title = 'Instagram'
     current_user = request.user
     if request.method == 'POST':
         form = EditProfileForm(request.POST, request.FILES)
@@ -114,6 +114,17 @@ def after_detail(request, id):
     return render(request, 'allofinsta/after.html', {'image': image})
 
 
+@login_required(login_url="/accounts/login/")
+def view_your_profile(request, pk):
+    title = "Instagram"
+    current_user = request.user
+    image = Image.get_images()
+    profile = Profile.get_profile()
+    comment = Comment.get_comment()
+    user = get_object_or_404(User, pk=pk)
+    return render(request, 'profiles/view.html', {"user": current_user, "images": image, "my_user": user, "comments": comment, "profile": profile, "title": title})
+
+
 @login_required(login_url='/accounts/login/')
 def new_comment(request, pk):
     image = get_object_or_404(Image, pk=id)
@@ -129,3 +140,15 @@ def new_comment(request, pk):
     else:
         form = CommentForm()
     return render(request, 'comment.html', {"user": current_user, "comment_form": form})
+
+
+@login_required(login_url="/accounts/login/")
+def like(request, operation, pk):
+    image = get_object_or_404(Image, pk=pk)
+    if operation == 'like':
+        image.likes += 1
+        image.save()
+    elif operation == 'unlike':
+        image.likes -= 1
+        image.save()
+    return redirect('home')

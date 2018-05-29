@@ -48,14 +48,17 @@
   padding-left: 750px;
 }
 </style>
+
+
   <div class="w3-card-4" style="background-color:white;margin-left:18%;margin-right:28%;opacity:0.9;margin-top:6%;">
     <a href="#"><img src="{{images_item.image.url}}" class="profile " alt="Image" style="width:100%"></a>
+
 
     <a href="{% url 'after' id=images_item.id %}"><img src="{{images_item.image.url}}" class="img-responsive " alt="Image" style="width:100%"></a>
     <p>{{images_item.image.caption}}</p>
     <a style="color:inherit;">
         <ion-icon id="heart" name="heart-empty"></ion-icon>
-        {# <a href="{% url 'comment' pk=img.id %}" style="color:inherit;"><i class="far fa-comment fa-2x ml-4"></i></a> #}
+        {# <a href="{% url 'comment' pk=image.id %}" style="color:inherit;"><i class="far fa-comment fa-2x ml-4"></i></a> #}
         <ion-icon id="bookmark" name="bookmark"></ion-icon>
 </a>
   </div>

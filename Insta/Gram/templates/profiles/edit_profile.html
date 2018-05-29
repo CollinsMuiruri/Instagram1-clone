@@ -1,13 +1,20 @@
 {% extends 'allofinsta/base.html' %}
-<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
 {% load bootstrap4 %}
 {% block content %}
 {{block.super}}
 <style>
   .container {
-    font-family: 'Amatic SC', cursive;
-    font-size: 25px;
+    font-family: 'Handlee', cursive;
+    font-size: 30px;
     text-align: left;
+    padding-top: 90px;
+  }
+  body {
+    background-image: url(/static/images/doll.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
   }
 </style>
 <div class="container">
@@ -25,7 +32,7 @@
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     <div class="form-group">
-                    <input type="submit" class="btn btn-info btn-sm" value="Post">
+                    <input type="submit" class="btn btn-info btn-sm" value="Post" style="font-size:20px;">
                 </div>
 
                 </form>
